@@ -3,40 +3,59 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mrida <mrida@student.42.fr>                +#+  +:+       +#+         #
+#    By: aalkhati <aalkhati@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/12/13 00:31:45 by mrida             #+#    #+#              #
-#    Updated: 2025/12/13 00:34:11 by mrida            ###   ########.fr        #
+#    Updated: 2026/01/03 04:28:02 by aalkhati         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
+NAME		= push_swap
 
-NAME = push_swap.a
-CC = cc
-FLAGS = -Wall -Wextra -Werror
-AR = ar rcs
-RM = rm -f
+CC			= cc
+CFLAGS		= -Wall -Wextra -Werror
+RM			= rm -f
 
-SRC =
-OBJ = $(SRC:.c=.o)
-INCLUDES = -I. -I./libft
+INC_DIR		= includes
+SRC_DIR		= src
+OBJ_DIR		= obj
 
-BONUS_OBJ = $(BONUS_SRC:.c=.o)
+SRCS		= $(SRC_DIR)/main.c \
+			  $(SRC_DIR)/stack/stack_init.c \
+			  $(SRC_DIR)/stack/stack_operations.c \
+			  $(SRC_DIR)/operations/swap.c \
+			  $(SRC_DIR)/operations/push.c \
+			  $(SRC_DIR)/operations/rotate.c \
+			  $(SRC_DIR)/operations/reverse_rotate.c \
+			  $(SRC_DIR)/parsing/parse_args.c \
+			  $(SRC_DIR)/parsing/validate_input.c \
+			  $(SRC_DIR)/utils/is_sorted.c \
+			  $(SRC_DIR)/utils/indexing.c \
+			  $(SRC_DIR)/utils/disorder.c \
+			  $(SRC_DIR)/algorithms/adaptive_sort.c \
+			  $(SRC_DIR)/algorithms/simple_sort.c \
+			  $(SRC_DIR)/algorithms/medium_sort.c \
+			  $(SRC_DIR)/algorithms/complex_sort.c
 
-all: $(NAME)
+OBJS		= $(SRCS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 
-$(NAME): $(OBJ)
-	@$(AR) $(NAME) $(OBJ)
+all:		$(NAME)
 
-%.o: %.c ft_printf.h
-	@$(CC) $(FLAGS) $(INCLUDES) -c $< -o $@
+$(NAME):	$(OBJS)
+			$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
+
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
+			@mkdir -p $(dir $@)
+			$(CC) $(CFLAGS) -I$(INC_DIR) -c $< -o $@
 
 clean:
-	@$(RM) $(OBJ)
+			$(RM) -r $(OBJ_DIR)
 
-fclean: clean
-	@$(RM) $(NAME)
+fclean:		clean
+			$(RM) $(NAME)
 
-re: fclean all
+re:			fclean all
 
-.PHONY: all clean fclean re
+bonus:		all
+
+.PHONY:		all clean fclean re bonus
