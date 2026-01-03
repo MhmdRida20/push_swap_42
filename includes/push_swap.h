@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aalkhati <aalkhati@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mrida <mrida@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/13 00:30:46 by mrida             #+#    #+#             */
-/*   Updated: 2026/01/02 23:58:16 by aalkhati         ###   ########.fr       */
+/*   Updated: 2026/01/03 04:17:07 by mrida            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,14 +36,17 @@ typedef enum e_strategy
 	ADAPTIVE
 }					t_strategy;
 
+//@operation store operations for output
+// disorder metric (0-1)
+//#strategy which algorithm to use
 typedef struct s_push_swap
 {
 	t_stack			*stack_a;
 	t_stack			*stack_b;
-	char **operations; // store operations for output
+	char			**operations;
 	int				op_count;
-	double disorder;     // disorder metric (0-1)
-	t_strategy strategy; // which algorithm to use
+	double			disorder;
+	t_strategy		strategy;
 }					t_push_swap;
 
 #endif

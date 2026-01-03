@@ -6,12 +6,15 @@
 /*   By: mrida <mrida@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/13 00:30:46 by mrida             #+#    #+#             */
-/*   Updated: 2026/01/02 23:59:46 by mrida            ###   ########.fr       */
+/*   Updated: 2026/01/03 04:43:00 by mrida            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
+
+# include <unistd.h>
+# include <stdlib.h>
 
 typedef struct s_node
 {
