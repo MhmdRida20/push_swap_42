@@ -6,7 +6,7 @@
 #    By: aalkhati <aalkhati@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/12/13 00:31:45 by mrida             #+#    #+#              #
-#    Updated: 2026/01/03 04:28:02 by aalkhati         ###   ########.fr        #
+#    Updated: 2026/01/03 06:21:10 by aalkhati         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,6 +19,11 @@ RM			= rm -f
 INC_DIR		= includes
 SRC_DIR		= src
 OBJ_DIR		= obj
+LIBFT_DIR	= libft
+PRINTF_DIR	= ft_printf
+
+LIBFT		= $(LIBFT_DIR)/libft.a
+PRINTF		= $(PRINTF_DIR)/libftprintf.a
 
 SRCS		= $(SRC_DIR)/main.c \
 			  $(SRC_DIR)/stack/stack_init.c \
@@ -39,10 +44,16 @@ SRCS		= $(SRC_DIR)/main.c \
 
 OBJS		= $(SRCS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 
-all:		$(NAME)
+all:		$(LIBFT) $(PRINTF) $(NAME)
+
+$(LIBFT):
+			make -C $(LIBFT_DIR)
+
+$(PRINTF):
+			make -C $(PRINTF_DIR)
 
 $(NAME):	$(OBJS)
-			$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
+			$(CC) $(CFLAGS) $(OBJS) $(LIBFT) $(PRINTF) -o $(NAME)
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 			@mkdir -p $(dir $@)
@@ -50,12 +61,14 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 
 clean:
 			$(RM) -r $(OBJ_DIR)
+			make -C $(LIBFT_DIR) clean
+			make -C $(PRINTF_DIR) clean
 
 fclean:		clean
 			$(RM) $(NAME)
+			make -C $(LIBFT_DIR) fclean
+			make -C $(PRINTF_DIR) fclean
 
 re:			fclean all
 
-bonus:		all
-
-.PHONY:		all clean fclean re bonus
+.PHONY:		all clean fclean re
