@@ -6,7 +6,7 @@
 /*   By: aalkhati <aalkhati@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/03 05:51:30 by aalkhati          #+#    #+#             */
-/*   Updated: 2026/01/03 06:02:29 by aalkhati         ###   ########.fr       */
+/*   Updated: 2026/01/21 20:14:23 by aalkhati         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ t_stack	*init_stack(void)
 	stack->size = 0;
 	return (stack);
 }
+
 t_node	*create_node(int value)
 {
 	t_node	*node;
@@ -37,6 +38,7 @@ t_node	*create_node(int value)
 	node->prev = NULL;
 	return (node);
 }
+
 void	free_stack(t_stack *stack)
 {
 	t_node	*current;
@@ -53,6 +55,7 @@ void	free_stack(t_stack *stack)
 	}
 	free(stack);
 }
+
 void	free_push_swap(t_push_swap *ps)
 {
 	if (!ps)

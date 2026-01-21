@@ -6,7 +6,7 @@
 /*   By: aalkhati <aalkhati@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/03 06:02:52 by aalkhati          #+#    #+#             */
-/*   Updated: 2026/01/03 06:10:24 by aalkhati         ###   ########.fr       */
+/*   Updated: 2026/01/21 20:15:44 by aalkhati         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,11 @@ void	push_to_stack(t_stack *stack, t_node *node)
 		node->next = stack->top;
 		node->prev = NULL;
 		stack->top->prev = node;
-		stack->top = node;	
+		stack->top = node;
 	}
 	stack->size++;
 }
+
 t_node	*detach_top(t_stack *stack)
 {
 	t_node	*node;
