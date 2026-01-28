@@ -6,7 +6,7 @@
 /*   By: aalkhati <aalkhati@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/21 19:40:31 by aalkhati          #+#    #+#             */
-/*   Updated: 2026/01/21 20:14:32 by aalkhati         ###   ########.fr       */
+/*   Updated: 2026/01/28 18:48:00 by aalkhati         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static int	has_duplicates(t_stack *stack)
 
 void	validate_input(t_push_swap *ps)
 {
-	if (!pa || !ps->stack_a || ps->stack_a->size == 0)
+	if (!ps || !ps->stack_a || ps->stack_a->size == 0)
 	{
 		free_push_swap(ps);
 		print_error();

@@ -6,7 +6,7 @@
 /*   By: aalkhati <aalkhati@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/03 04:29:11 by aalkhati          #+#    #+#             */
-/*   Updated: 2026/01/21 20:11:57 by aalkhati         ###   ########.fr       */
+/*   Updated: 2026/01/28 18:44:07 by aalkhati         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static void	swap_top_two(t_stack *stack)
 
 	first = stack->top;
 	second = first->next;
-	first->index = second->next;
+	first->next = second->next;
 	second->next = first;
 	stack->top = second;
 }

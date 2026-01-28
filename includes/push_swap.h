@@ -6,7 +6,7 @@
 /*   By: aalkhati <aalkhati@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/21 20:07:34 by aalkhati          #+#    #+#             */
-/*   Updated: 2026/01/21 20:07:44 by aalkhati         ###   ########.fr       */
+/*   Updated: 2026/01/28 19:52:49 by aalkhati         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,5 +98,6 @@ int					is_sorted(t_stack *stack);
 double				calculate_disorder(t_stack *stack);
 void				assign_indices(t_stack *stack);
 void				print_error(void);
+void				free_split(char **split);
 
 #endif

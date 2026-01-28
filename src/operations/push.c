@@ -3,55 +3,41 @@
 /*                                                        :::      ::::::::   */
 /*   push.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrida <mrida@student.42.fr>                +#+  +:+       +#+        */
+/*   By: aalkhati <aalkhati@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/03 04:23:21 by mrida             #+#    #+#             */
-/*   Updated: 2026/01/03 05:17:32 by mrida            ###   ########.fr       */
+/*   Updated: 2026/01/28 18:45:52 by aalkhati         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../../includes/push_swap.h"
 
-int	stack_len(t_stack *stack)
-{
-	if (!stack)
-		return (0);
-	return (stack->size);
-}
-
-static void	push(t_stack *dst, t_stack *src)
+static void	push(t_stack *from, t_stack *to)
 {
 	t_node	*node;
 
-	if (!src || !src->top)
+	if (from->size == 0)
 		return ;
-	node = src->top;
-	src->top = node->next;
-	if (src->top)
-		src->top->prev = NULL;
-	else
-		src->bottom = NULL;
-	src->size--;
-	node->next = dst->top;
-	node->prev = NULL;
-	if (dst->top)
-		dst->top->prev = node;
-	else
-		dst->bottom = node;
-	dst->top = node;
-	dst->size++;
+	node = from->top;
+	from->top = node->next;
+	from->size--;
+	node->next = to->top;
+	to->top = node;
+	to->size++;
 }
 
-void	pa(t_push_swap *ps, int print)
+void	pa(t_push_swap *ps)
 {
-	push(ps->stack_a, ps->stack_b);
-	if (print)
-		ft_printf("pa\n");
-}
-
-void	pb(t_push_swap *ps, int print)
-{
+	if (ps->stack_b->size == 0)
+		return ;
 	push(ps->stack_b, ps->stack_a);
-	if (print)
-		ft_printf("pb\n");
+	ft_printf("pa\n");
+}
+
+void	pb(t_push_swap *ps)
+{
+	if (ps->stack_a->size == 0)
+		return ;
+	push(ps->stack_a, ps->stack_b);
+	ft_printf("pb\n");
 }

@@ -1,18 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   free_split.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrida <mrida@student.42.fr>                +#+  +:+       +#+        */
+/*   By: aalkhati <aalkhati@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/20 16:35:30 by mrida             #+#    #+#             */
-/*   Updated: 2026/01/03 00:01:31 by mrida            ###   ########.fr       */
+/*   Created: 2026/01/28 19:52:16 by aalkhati          #+#    #+#             */
+/*   Updated: 2026/01/28 19:52:17 by aalkhati         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../../includes/push_swap.h"
 
-int	main(void)
+void	free_split(char **split)
 {
-	return (0);
+	int	i;
+
+	if (!split)
+		return ;
+	i = 0;
+	while (split[i])
+	{
+		free(split[i]);
+		i++;
+	}
+	free(split);
 }

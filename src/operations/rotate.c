@@ -3,32 +3,35 @@
 /*                                                        :::      ::::::::   */
 /*   rotate.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrida <mrida@student.42.fr>                +#+  +:+       +#+        */
+/*   By: aalkhati <aalkhati@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/03 05:13:33 by mrida             #+#    #+#             */
-/*   Updated: 2026/01/03 05:42:47 by mrida            ###   ########.fr       */
+/*   Updated: 2026/01/28 18:53:05 by aalkhati         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../../includes/push_swap.h"
 
 static void	rotate(t_stack *stack)
 {
 	t_node	*first;
+	t_node	*last;
 
-	if (!stack || stack->size < 2)
+	if (stack->size < 2)
 		return ;
 	first = stack->top;
+	last = stack->top;
+	while (last->next)
+		last = last->next;
 	stack->top = first->next;
-	stack->top->prev = NULL;
 	first->next = NULL;
-	first->prev = stack->bottom;
-	stack->bottom->next = first;
-	stack->bottom = first;
+	last->next = first;
 }
 
 void	ra(t_push_swap *ps, int print)
 {
+	if (!ps || !ps->stack_a)
+		return ;
 	rotate(ps->stack_a);
 	if (print)
 		ft_printf("ra\n");
@@ -36,15 +39,18 @@ void	ra(t_push_swap *ps, int print)
 
 void	rb(t_push_swap *ps, int print)
 {
+	if (!ps || !ps->stack_b)
+		return ;
 	rotate(ps->stack_b);
 	if (print)
 		ft_printf("rb\n");
 }
 
-void	rr(t_push_swap *ps, int print)
+void	rr(t_push_swap *ps)
 {
-	rotate(ps->stack_a);
-	rotate(ps->stack_b);
-	if (print)
-		ft_printf("rr\n");
+	if (!ps)
+		return ;
+	ra(ps, 0);
+	rb(ps, 0);
+	ft_printf("rr\n");
 }
