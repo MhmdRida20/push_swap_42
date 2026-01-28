@@ -44,7 +44,7 @@ int	main(int argc, char **argv)
 		print_error();
 	parse_args(ps, argc, argv);
 	validate_input(ps);
-	ft_printf("STACK SIZE = %d\n", ps->stack_a->size);
+
 	if (is_sorted(ps->stack_a))
 	{
 		free_push_swap(ps);
