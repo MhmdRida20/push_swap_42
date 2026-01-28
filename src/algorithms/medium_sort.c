@@ -64,10 +64,8 @@ static void	push_min_to_b(t_push_swap *ps)
 
 void	medium_sort(t_push_swap *ps)
 {
-	int original_size;
 	int pushed;
 
-	original_size = ps->stack_a->size;
 	pushed = 0;
 	while (ps->stack_a->size > 3)
 	{
