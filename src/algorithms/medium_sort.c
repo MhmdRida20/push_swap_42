@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   medium_sort.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aalkhati <aalkhati@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mrida <mrida@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/28 18:37:31 by aalkhati          #+#    #+#             */
-/*   Updated: 2026/01/28 18:37:34 by aalkhati         ###   ########.fr       */
+/*   Updated: 2026/01/30 14:04:37 by mrida            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ static void	push_min_to_b(t_push_swap *ps)
 
 void	medium_sort(t_push_swap *ps)
 {
-	int pushed;
+	int	pushed;
 
 	pushed = 0;
 	while (ps->stack_a->size > 3)

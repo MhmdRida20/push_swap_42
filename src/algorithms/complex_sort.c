@@ -3,22 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   complex_sort.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aalkhati <aalkhati@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mrida <mrida@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/28 18:38:05 by aalkhati          #+#    #+#             */
-/*   Updated: 2026/01/28 18:51:49 by aalkhati         ###   ########.fr       */
+/*   Updated: 2026/01/30 14:04:22 by mrida            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
-
-static int	get_chunk_size(int stack_size)
-{
-	if (stack_size <= 100)
-		return (20);
-	else
-		return (35);
-}
 
 static int	find_in_range(t_stack *stack, int start, int end)
 {
@@ -111,7 +103,10 @@ void	complex_sort(t_push_swap *ps)
 	int	chunk_end;
 	int	total;
 
-	chunk_size = get_chunk_size(ps->stack_a->size);
+	if (ps->stack_a->size <= 100)
+		chunk_size = 20;
+	else
+		chunk_size = 35;
 	total = ps->stack_a->size;
 	chunk_start = 0;
 	while (ps->stack_a->size > 0)

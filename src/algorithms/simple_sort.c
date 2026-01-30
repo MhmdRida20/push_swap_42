@@ -3,22 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   simple_sort.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aalkhati <aalkhati@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mrida <mrida@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/23 15:47:37 by mrida             #+#    #+#             */
-/*   Updated: 2026/01/28 19:29:05 by aalkhati         ###   ########.fr       */
+/*   Updated: 2026/01/30 14:04:46 by mrida            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
-static void sort_two(t_push_swap *ps)
+static void	sort_two(t_push_swap *ps)
 {
 	if (ps->stack_a->top->index > ps->stack_a->top->next->index)
-		sa(ps,1);
+		sa(ps, 1);
 }
 
-static void sort_three(t_push_swap *ps)
+static void	sort_three(t_push_swap *ps)
 {
 	int	a;
 	int	b;
@@ -35,7 +35,7 @@ static void sort_three(t_push_swap *ps)
 		rra(ps, 1);
 	}
 	else if (a > b && b < c && a > c)
-		ra(ps ,1);
+		ra(ps, 1);
 	else if (a < b && b > c && a < c)
 	{
 		sa(ps, 1);
@@ -45,7 +45,7 @@ static void sort_three(t_push_swap *ps)
 		rra(ps, 1);
 }
 
-void simple_sort(t_push_swap *ps)
+void	simple_sort(t_push_swap *ps)
 {
 	if (ps->stack_a->size == 2)
 		sort_two(ps);

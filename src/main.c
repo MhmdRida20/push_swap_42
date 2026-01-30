@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aalkhati <aalkhati@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mrida <mrida@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/28 18:41:02 by aalkhati          #+#    #+#             */
-/*   Updated: 2026/01/28 19:49:58 by aalkhati         ###   ########.fr       */
+/*   Updated: 2026/01/30 13:59:55 by mrida            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,6 @@ int	main(int argc, char **argv)
 		print_error();
 	parse_args(ps, argc, argv);
 	validate_input(ps);
-
 	if (is_sorted(ps->stack_a))
 	{
 		free_push_swap(ps);
