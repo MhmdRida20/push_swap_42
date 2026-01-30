@@ -6,7 +6,7 @@
 /*   By: mrida <mrida@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/21 19:19:49 by aalkhati          #+#    #+#             */
-/*   Updated: 2026/01/30 14:05:39 by mrida            ###   ########.fr       */
+/*   Updated: 2026/01/30 14:31:36 by mrida            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,26 +69,26 @@ static void	process_arg(t_push_swap *ps, char *arg)
 	while (--i >= 0)
 	{
 		if (!is_valid_number(nums[i]))
-		{
-			free_split(nums);
-			print_error();
-		}
+			checker((long)2147483649,*nums);
 		val = ft_atol(nums[i]);
-		if (val > 2147483647 || val < -2147483648)
-		{
-			free_split(nums);
-			print_error();
-		}
+		checker(val, *nums);
 		node = create_node((int)val);
 		if (!node)
-		{
-			free_split(nums);
-			print_error();
-		}
+			checker((long)2147483649,*nums);
 		push_to_stack(ps->stack_a, node);
 	}
 	free_split(nums);
 }
+
+void	checker(long val, char ***nums)
+{
+	if (val > 2147483647 || val < -2147483648)
+	{
+		free_split(nums);
+		print_error();
+	}
+}
+
 
 void	parse_args(t_push_swap *ps, int argc, char **argv)
 {
