@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: aalkhati <aalkhati@student.42.fr>          +#+  +:+       +#+         #
+#    By: mrida <mrida@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/10/31 14:04:58 by aalkhati          #+#    #+#              #
-#    Updated: 2025/11/05 16:54:50 by aalkhati         ###   ########.fr        #
+#    Updated: 2026/01/31 16:23:54 by mrida            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -73,20 +73,20 @@ INCS    := libft.h
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	$(AR) $(ARFLAGS) $(NAME) $(OBJS)
+	@$(AR) $(ARFLAGS) $(NAME) $(OBJS)
 
 bonus: $(OBJS) $(BOBJS)
-	$(AR) $(ARFLAGS) $(NAME) $(OBJS) $(BOBJS)
+	@$(AR) $(ARFLAGS) $(NAME) $(OBJS) $(BOBJS)
 
 # Pattern rule
 %.o: %.c $(INCS)
-	$(CC) $(CFLAGS) -I. -c $< -o $@
+	@$(CC) $(CFLAGS) -I. -c $< -o $@
 
 clean:
-	$(RM) $(OBJS) $(BOBJS)
+	@$(RM) $(OBJS) $(BOBJS)
 
 fclean: clean
-	$(RM) $(NAME)
+	@$(RM) $(NAME)
 
 re: fclean all
 

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: aalkhati <aalkhati@student.42.fr>          +#+  +:+       +#+         #
+#    By: mrida <mrida@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/11/28 19:07:33 by aalkhati          #+#    #+#              #
-#    Updated: 2025/11/28 19:13:21 by aalkhati         ###   ########.fr        #
+#    Updated: 2026/01/31 16:24:09 by mrida            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,15 +33,15 @@ INCS    := ft_printf.h
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	$(AR) $(ARFLAGS) $(NAME) $(OBJS)
+	@$(AR) $(ARFLAGS) $(NAME) $(OBJS)
 
 %.o: %.c $(INCS)
-	$(CC) $(CFLAGS) -I. -c $< -o $@
+	@$(CC) $(CFLAGS) -I. -c $< -o $@
 
 clean:
-	$(RM) $(OBJS) $(BOBJS)
+	@$(RM) $(OBJS) $(BOBJS)
 
 fclean: clean
-	$(RM) $(NAME)
+	@$(RM) $(NAME)
 
 re: fclean all

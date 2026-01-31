@@ -6,7 +6,7 @@
 #    By: mrida <mrida@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/12/13 00:31:45 by mrida             #+#    #+#              #
-#    Updated: 2026/01/30 13:57:17 by mrida            ###   ########.fr        #
+#    Updated: 2026/01/31 16:28:17 by mrida            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -54,19 +54,19 @@ $(PRINTF):
 			make -C $(PRINTF_DIR)
 
 $(NAME):	$(OBJS)
-			$(CC) $(CFLAGS) $(OBJS) $(LIBFT) $(PRINTF) -o $(NAME)
+			@$(CC) $(CFLAGS) $(OBJS) $(LIBFT) $(PRINTF) -o $(NAME)
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 			@mkdir -p $(dir $@)
-			$(CC) $(CFLAGS) -I$(INC_DIR) -c $< -o $@
+			@$(CC) $(CFLAGS) -I$(INC_DIR) -c $< -o $@
 
 clean:
-			$(RM) -r $(OBJ_DIR)
+			@$(RM) -r $(OBJ_DIR)
 			make -C $(LIBFT_DIR) clean
 			make -C $(PRINTF_DIR) clean
 
 fclean:		clean
-			$(RM) $(NAME)
+			@$(RM) $(NAME)
 			make -C $(LIBFT_DIR) fclean
 			make -C $(PRINTF_DIR) fclean
 

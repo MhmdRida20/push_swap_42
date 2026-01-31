@@ -6,11 +6,11 @@
 /*   By: mrida <mrida@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/20 16:35:30 by mrida             #+#    #+#             */
-/*   Updated: 2026/01/03 00:01:31 by mrida            ###   ########.fr       */
+/*   Updated: 2026/01/31 14:58:40 by mrida            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "includes/push_swap.h"
 
 int	main(void)
 {

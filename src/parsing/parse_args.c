@@ -6,7 +6,7 @@
 /*   By: mrida <mrida@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/21 19:19:49 by aalkhati          #+#    #+#             */
-/*   Updated: 2026/01/30 14:31:36 by mrida            ###   ########.fr       */
+/*   Updated: 2026/01/31 16:17:12 by mrida            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,27 +30,26 @@ static int	is_valid_number(char *str)
 	return (1);
 }
 
-static long	ft_atol(const char *nptr)
+static void	cleanup_and_error(char **nums)
 {
-	long	number;
-	int		sign;
+	free_split(nums);
+	print_error();
+}
 
-	number = 0;
-	sign = 1;
-	while ((*nptr >= 9 && *nptr <= 13) || *nptr == 32)
-		nptr++;
-	if (*nptr == '+' || *nptr == '-')
+int	has_duplicate(t_stack *stack, int value)
+{
+	t_node	*current;
+
+	if (!stack)
+		return (0);
+	current = stack->top;
+	while (current)
 	{
-		if (*nptr == '-')
-			sign = -1;
-		nptr++;
+		if (current->value == value)
+			return (1);
+		current = current->next;
 	}
-	while (*nptr >= '0' && *nptr <= '9')
-	{
-		number = number * 10 + (*nptr - '0');
-		nptr++;
-	}
-	return (number * sign);
+	return (0);
 }
 
 static void	process_arg(t_push_swap *ps, char *arg)
@@ -69,26 +68,18 @@ static void	process_arg(t_push_swap *ps, char *arg)
 	while (--i >= 0)
 	{
 		if (!is_valid_number(nums[i]))
-			checker((long)2147483649,*nums);
+			cleanup_and_error(nums);
 		val = ft_atol(nums[i]);
-		checker(val, *nums);
+		if (val > INT_MAX || val < INT_MIN
+			|| has_duplicate(ps->stack_a, (int)val))
+			cleanup_and_error(nums);
 		node = create_node((int)val);
 		if (!node)
-			checker((long)2147483649,*nums);
+			cleanup_and_error(nums);
 		push_to_stack(ps->stack_a, node);
 	}
 	free_split(nums);
 }
-
-void	checker(long val, char ***nums)
-{
-	if (val > 2147483647 || val < -2147483648)
-	{
-		free_split(nums);
-		print_error();
-	}
-}
-
 
 void	parse_args(t_push_swap *ps, int argc, char **argv)
 {
