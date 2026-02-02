@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrida <mrida@student.42.fr>                +#+  +:+       +#+        */
+/*   By: aalkhati <aalkhati@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/21 20:07:34 by aalkhati          #+#    #+#             */
-/*   Updated: 2026/01/31 14:48:30 by mrida            ###   ########.fr       */
+/*   Updated: 2026/02/02 22:25:00 by aalkhati         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,10 +96,10 @@ void				adaptive_sort(t_push_swap *ps);
 
 /* ========== UTILS ========== */
 int					is_sorted(t_stack *stack);
-double				calculate_disorder(t_stack *stack);
-void				assign_indices(t_stack *stack);
 void				print_error(void);
+int					ft_atoi_safe(const char *str, t_push_swap *ps);
+void				assign_indices(t_stack *stack);
+double				calculate_disorder(t_stack *stack);
 void				free_split(char **split);
-long				ft_atol(const char *nptr);
 
 #endif

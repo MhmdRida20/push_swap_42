@@ -3,92 +3,117 @@
 /*                                                        :::      ::::::::   */
 /*   parse_args.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrida <mrida@student.42.fr>                +#+  +:+       +#+        */
+/*   By: aalkhati <aalkhati@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/21 19:19:49 by aalkhati          #+#    #+#             */
-/*   Updated: 2026/01/31 16:17:12 by mrida            ###   ########.fr       */
+/*   Updated: 2026/02/02 22:21:39 by aalkhati         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
-static int	is_valid_number(char *str)
+static void	parse_split_args(t_push_swap *ps, char **nums)
 {
-	int	i;
-
-	i = 0;
-	if (str[i] == '-' || str[i] == '+')
-		i++;
-	if (!str[i])
-		return (0);
-	while (str[i])
-	{
-		if (!ft_isdigit(str[i]))
-			return (0);
-		i++;
-	}
-	return (1);
-}
-
-static void	cleanup_and_error(char **nums)
-{
-	free_split(nums);
-	print_error();
-}
-
-int	has_duplicate(t_stack *stack, int value)
-{
-	t_node	*current;
-
-	if (!stack)
-		return (0);
-	current = stack->top;
-	while (current)
-	{
-		if (current->value == value)
-			return (1);
-		current = current->next;
-	}
-	return (0);
-}
-
-static void	process_arg(t_push_swap *ps, char *arg)
-{
-	char	**nums;
 	int		i;
-	long	val;
+	int		num;
 	t_node	*node;
+	char	*trimmed;
+	int		count;
 
-	nums = ft_split(arg, ' ');
-	if (!nums)
-		print_error();
-	i = 0;
-	while (nums[i])
-		i++;
-	while (--i >= 0)
+	count = 0;
+	while (nums[count])
+		count++;
+	i = count - 1;
+	while (i >= 0)
 	{
-		if (!is_valid_number(nums[i]))
-			cleanup_and_error(nums);
-		val = ft_atol(nums[i]);
-		if (val > INT_MAX || val < INT_MIN
-			|| has_duplicate(ps->stack_a, (int)val))
-			cleanup_and_error(nums);
-		node = create_node((int)val);
+		trimmed = ft_strtrim(nums[i], " \t\n\r");
+		if (!trimmed || !trimmed[0])
+		{
+			if (trimmed)
+				free(trimmed);
+			i--;
+			continue;
+		}
+		if (!is_valid_number(trimmed))
+		{
+			free(trimmed);
+			free_split(nums);
+			free_push_swap(ps);
+			print_error();
+		}
+		num = ft_atoi_safe(trimmed, ps);
+		free(trimmed);
+		node = create_node(num);
 		if (!node)
-			cleanup_and_error(nums);
+		{
+			free_split(nums);
+			free_push_swap(ps);
+			print_error();
+		}
 		push_to_stack(ps->stack_a, node);
+		i--;
 	}
-	free_split(nums);
+}
+
+static void	parse_multiple_args(t_push_swap *ps, int argc, char **argv, int start)
+{
+	int		i;
+	int		num;
+	t_node	*node;
+	char	*trimmed;
+
+	i = argc - 1;
+	while (i >= start)
+	{
+		trimmed = ft_strtrim(argv[i], " \t\n\r");
+		if (!trimmed || !trimmed[0])
+		{
+			if (trimmed)
+				free(trimmed);
+			i--;
+			continue;
+		}
+		if (!is_valid_number(trimmed))
+		{
+			free(trimmed);
+			free_push_swap(ps);
+			print_error();
+		}
+		num = ft_atoi_safe(trimmed, ps);
+		free(trimmed);
+		node = create_node(num);
+		if (!node)
+		{
+			free_push_swap(ps);
+			print_error();
+		}
+		push_to_stack(ps->stack_a, node);
+		i--;
+	}
 }
 
 void	parse_args(t_push_swap *ps, int argc, char **argv)
 {
-	int	i;
+	parse_multiple_args(ps, argc, argv, 1);
+}
 
-	i = argc - 1;
-	while (i >= 1)
+void	parse_args_from_index(t_push_swap *ps, int argc, char **argv, int start)
+{
+	char	**nums;
+
+	if (argc == start + 1)
 	{
-		process_arg(ps, argv[i]);
-		i--;
+		nums = ft_split(argv[start], ' ');
+		if (!nums)
+		{
+			free_push_swap(ps);
+			print_error();
+		}
+		parse_split_args(ps, nums);
+		free_split(nums);
+	}
+	else
+	{
+		parse_multiple_args(ps, argc, argv, start);
 	}
 }
