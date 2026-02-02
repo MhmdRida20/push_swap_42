@@ -6,7 +6,7 @@
 /*   By: aalkhati <aalkhati@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/03 05:13:33 by mrida             #+#    #+#             */
-/*   Updated: 2026/02/02 20:02:21 by aalkhati         ###   ########.fr       */
+/*   Updated: 2026/01/28 18:53:05 by aalkhati         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ void	ra(t_push_swap *ps, int print)
 	if (!ps || !ps->stack_a)
 		return ;
 	rotate(ps->stack_a);
-	ps->op_count++;
 	if (print)
 		ft_printf("ra\n");
 }
@@ -43,7 +42,6 @@ void	rb(t_push_swap *ps, int print)
 	if (!ps || !ps->stack_b)
 		return ;
 	rotate(ps->stack_b);
-	ps->op_count++;
 	if (print)
 		ft_printf("rb\n");
 }
@@ -52,8 +50,7 @@ void	rr(t_push_swap *ps)
 {
 	if (!ps)
 		return ;
-	rotate(ps->stack_a);
-	rotate(ps->stack_b);
-	ps->op_count++;
+	ra(ps, 0);
+	rb(ps, 0);
 	ft_printf("rr\n");
 }

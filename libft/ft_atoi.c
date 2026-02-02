@@ -6,31 +6,34 @@
 /*   By: aalkhati <aalkhati@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/30 17:58:18 by aalkhati          #+#    #+#             */
-/*   Updated: 2026/02/02 19:27:15 by aalkhati         ###   ########.fr       */
+/*   Updated: 2025/11/05 18:23:28 by aalkhati         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_atoi(const char *str)
+int	ft_atoi(const char *nptr)
 {
-	long	result;
-	int		sign;
+	short	parity;
+	int		number;
 
-	result = 0;
-	sign = 1;
-	while (*str == ' ' || (*str >= 9 && *str <= 13))
-		str++;
-	if (*str == '-' || *str == '+')
+	parity = 0;
+	number = 0;
+	while (((*nptr >= 9 && *nptr <= 13) || *nptr == 32))
+		nptr++;
+	if (*nptr == '+' || *nptr == '-')
 	{
-		if (*str == '-')
-			sign = -1;
-		str++;
+		if (*nptr == '-')
+			parity++;
+		nptr++;
 	}
-	while (*str >= '0' && *str <= '9')
+	while (*nptr >= 48 && *nptr <= 57)
 	{
-		result = result * 10 + (*str - '0');
-		str++;
+		number *= 10;
+		number += *nptr - 48;
+		nptr++;
 	}
-	return ((int)(result * sign));
+	if (!(parity % 2))
+		return (number);
+	return (-number);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_args.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aalkhati <aalkhati@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mrida <mrida@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/21 19:19:49 by aalkhati          #+#    #+#             */
-/*   Updated: 2026/02/02 20:45:49 by aalkhati         ###   ########.fr       */
+/*   Updated: 2026/01/31 16:17:12 by mrida            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,82 +30,65 @@ static int	is_valid_number(char *str)
 	return (1);
 }
 
-static long	ft_atol(const char *nptr)
+static void	cleanup_and_error(char **nums)
 {
-	long	number;
-	int		sign;
+	free_split(nums);
+	print_error();
+}
 
-	number = 0;
-	sign = 1;
-	while ((*nptr >= 9 && *nptr <= 13) || *nptr == 32)
-		nptr++;
-	if (*nptr == '+' || *nptr == '-')
+int	has_duplicate(t_stack *stack, int value)
+{
+	t_node	*current;
+
+	if (!stack)
+		return (0);
+	current = stack->top;
+	while (current)
 	{
-		if (*nptr == '-')
-			sign = -1;
-		nptr++;
+		if (current->value == value)
+			return (1);
+		current = current->next;
 	}
-	while (*nptr >= '0' && *nptr <= '9')
-	{
-		number = number * 10 + (*nptr - '0');
-		nptr++;
-	}
-	return (number * sign);
+	return (0);
 }
 
 static void	process_arg(t_push_swap *ps, char *arg)
 {
+	char	**nums;
 	int		i;
-	int		num;
+	long	val;
 	t_node	*node;
+
+	nums = ft_split(arg, ' ');
+	if (!nums)
+		print_error();
+	i = 0;
+	while (nums[i])
+		i++;
+	while (--i >= 0)
+	{
+		if (!is_valid_number(nums[i]))
+			cleanup_and_error(nums);
+		val = ft_atol(nums[i]);
+		if (val > INT_MAX || val < INT_MIN
+			|| has_duplicate(ps->stack_a, (int)val))
+			cleanup_and_error(nums);
+		node = create_node((int)val);
+		if (!node)
+			cleanup_and_error(nums);
+		push_to_stack(ps->stack_a, node);
+	}
+	free_split(nums);
+}
+
+void	parse_args(t_push_swap *ps, int argc, char **argv)
+{
+	int	i;
 
 	i = argc - 1;
 	while (i >= 1)
 	{
-		if (!is_valid_number(nums[i]))
-		{
-			free_split(nums);
-			print_error();
-		}
-		val = ft_atol(nums[i]);
-		if (val > 2147483647 || val < -2147483648)
-		{
-			free_split(nums);
-			print_error();
-		}
-		node = create_node((int)val);
-		if (!node)
-		{
-			free_split(nums);
-			print_error();
-		}
-		push_to_stack(ps->stack_a, node);
-		i--;
-	}
-}
-
-void	parse_args_from_index(t_push_swap *ps, int argc, char **argv, int start)
-{
-	int		i;
-	int		num;
-	t_node	*node;
-
-	i = argc - 1;
-	while (i >= start)
-	{
-		if (!is_valid_number(argv[i]))
-		{
-			free_push_swap(ps);
-			print_error();
-		}
-		num = ft_atoi_safe(argv[i], ps);
-		node = create_node(num);
-		if (!node)
-		{
-			free_push_swap(ps);
-			print_error();
-		}
-		push_to_stack(ps->stack_a, node);
+		process_arg(ps, argv[i]);
 		i--;
 	}
 }
