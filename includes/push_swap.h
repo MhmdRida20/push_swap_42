@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrida <mrida@student.42.fr>                +#+  +:+       +#+        */
+/*   By: aalkhati <aalkhati@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/21 20:07:34 by aalkhati          #+#    #+#             */
-/*   Updated: 2026/01/31 14:48:30 by mrida            ###   ########.fr       */
+/*   Updated: 2026/02/02 20:44:10 by aalkhati         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,9 @@ typedef struct s_push_swap
 /* ========== PARSING ========== */
 void				parse_args(t_push_swap *ps, int argc, char **argv);
 void				validate_input(t_push_swap *ps);
+void				parse_args_from_index(t_push_swap *ps, int argc,
+						char **argv, int start);
+int					is_valid_number(char *str); 
 
 /* ========== STACK INIT ========== */
 t_stack				*init_stack(void);
@@ -100,6 +103,8 @@ double				calculate_disorder(t_stack *stack);
 void				assign_indices(t_stack *stack);
 void				print_error(void);
 void				free_split(char **split);
+int					is_valid_number(char *str);
+int					ft_atoi_safe(const char *str, t_push_swap *ps);
 long				ft_atol(const char *nptr);
 
 #endif

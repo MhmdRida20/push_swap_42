@@ -6,7 +6,11 @@
 #    By: mrida <mrida@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/12/13 00:31:45 by mrida             #+#    #+#              #
+<<<<<<< HEAD
 #    Updated: 2026/01/31 16:28:17 by mrida            ###   ########.fr        #
+=======
+#    Updated: 2026/02/02 19:29:18 by aalkhati         ###   ########.fr        #
+>>>>>>> 5d46b16 (hh)
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,11 +41,11 @@ SRCS		= $(SRC_DIR)/main.c \
 			  $(SRC_DIR)/utils/is_sorted.c \
 			  $(SRC_DIR)/utils/indexing.c \
 			  $(SRC_DIR)/utils/disorder.c \
+			  $(SRC_DIR)/utils/ft_atoi_safe.c \
 			  $(SRC_DIR)/algorithms/adaptive_sort.c \
 			  $(SRC_DIR)/algorithms/simple_sort.c \
 			  $(SRC_DIR)/algorithms/medium_sort.c \
-			  $(SRC_DIR)/algorithms/complex_sort.c\
-			  $(SRC_DIR)/utils/free_split.c
+			  $(SRC_DIR)/algorithms/complex_sort.c
 
 OBJS		= $(SRCS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 

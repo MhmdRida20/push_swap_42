@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_atoi_safe.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aalkhati <aalkhati@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/30 17:58:18 by aalkhati          #+#    #+#             */
-/*   Updated: 2026/02/02 19:27:15 by aalkhati         ###   ########.fr       */
+/*   Created: 2026/02/02 19:27:50 by aalkhati          #+#    #+#             */
+/*   Updated: 2026/02/02 19:32:46 by aalkhati         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../../includes/push_swap.h"
 
-int	ft_atoi(const char *str)
+int	ft_atoi_safe(const char *str, t_push_swap *ps)
 {
 	long	result;
 	int		sign;
@@ -30,6 +30,11 @@ int	ft_atoi(const char *str)
 	while (*str >= '0' && *str <= '9')
 	{
 		result = result * 10 + (*str - '0');
+		if (result * sign > 2147483647 || result * sign < -2147483648)
+		{
+			free_push_swap(ps);
+			print_error();
+		}
 		str++;
 	}
 	return ((int)(result * sign));

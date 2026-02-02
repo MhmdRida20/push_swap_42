@@ -6,7 +6,7 @@
 /*   By: aalkhati <aalkhati@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/03 05:34:30 by aalkhati          #+#    #+#             */
-/*   Updated: 2026/01/21 20:12:04 by aalkhati         ###   ########.fr       */
+/*   Updated: 2026/02/02 20:02:37 by aalkhati         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ static void	reverse_rotate(t_stack *stack)
 void	rra(t_push_swap *ps, int print)
 {
 	reverse_rotate(ps->stack_a);
+	ps->op_count++;
 	if (print)
 		ft_printf("rra\n");
 }
@@ -40,13 +41,15 @@ void	rra(t_push_swap *ps, int print)
 void	rrb(t_push_swap *ps, int print)
 {
 	reverse_rotate(ps->stack_b);
+	ps->op_count++;
 	if (print)
 		ft_printf("rrb\n");
 }
 
 void	rrr(t_push_swap *ps)
 {
-	rra(ps, 0);
-	rrb(ps, 0);
+	reverse_rotate(ps->stack_a);
+	reverse_rotate(ps->stack_b);
+	ps->op_count++;
 	ft_printf("rrr\n");
 }
