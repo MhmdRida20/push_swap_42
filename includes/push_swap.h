@@ -6,7 +6,7 @@
 /*   By: aalkhati <aalkhati@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/21 20:07:34 by aalkhati          #+#    #+#             */
-/*   Updated: 2026/02/02 22:25:00 by aalkhati         ###   ########.fr       */
+/*   Updated: 2026/02/02 22:48:44 by aalkhati         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,10 @@ typedef struct s_push_swap
 
 /* ========== PARSING ========== */
 void				parse_args(t_push_swap *ps, int argc, char **argv);
+void				parse_args_from_index(t_push_swap *ps, int argc,
+						char **argv, int start);
 void				validate_input(t_push_swap *ps);
+int					is_valid_number(char *str);
 
 /* ========== STACK INIT ========== */
 t_stack				*init_stack(void);
