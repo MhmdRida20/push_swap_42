@@ -6,7 +6,7 @@
 /*   By: aalkhati <aalkhati@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/03 06:10:51 by aalkhati          #+#    #+#             */
-/*   Updated: 2026/02/02 22:08:08 by aalkhati         ###   ########.fr       */
+/*   Updated: 2026/02/02 22:08:36 by aalkhati         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,4 +32,4 @@ int	is_sorted(t_stack *stack)
 		current = current->next;
 	}
 	return (1);
-}//testing
+}
