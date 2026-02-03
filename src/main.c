@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aalkhati <aalkhati@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mrida <mrida@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/02 18:58:22 by aalkhati          #+#    #+#             */
-/*   Updated: 2026/02/02 22:52:40 by aalkhati         ###   ########.fr       */
+/*   Updated: 2026/02/03 13:28:07 by mrida            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,8 @@ static int	ft_strcmp_simple(const char *s1, const char *s2)
 	return (*s1 - *s2);
 }
 
-static void	parse_flags(t_push_swap *ps, int argc, char **argv, int *start, int *bench)
+static void	parse_flags(t_push_swap *ps,
+	int argc, char **argv, int *start, int *bench)
 {
 	int	i;
 

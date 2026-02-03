@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_args.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aalkhati <aalkhati@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mrida <mrida@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/21 19:19:49 by aalkhati          #+#    #+#             */
-/*   Updated: 2026/02/02 22:45:31 by aalkhati         ###   ########.fr       */
+/*   Updated: 2026/02/03 13:37:01 by mrida            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static void	parse_split_args(t_push_swap *ps, char **nums)
 			if (trimmed)
 				free(trimmed);
 			i--;
-			continue;
+			continue ;
 		}
 		if (!is_valid_number(trimmed))
 		{
@@ -55,7 +55,8 @@ static void	parse_split_args(t_push_swap *ps, char **nums)
 	}
 }
 
-static void	parse_multiple_args(t_push_swap *ps, int argc, char **argv, int start)
+static void	parse_multiple_args(t_push_swap *ps,
+	int argc, char **argv, int start)
 {
 	int		i;
 	int		num;
@@ -71,7 +72,7 @@ static void	parse_multiple_args(t_push_swap *ps, int argc, char **argv, int star
 			if (trimmed)
 				free(trimmed);
 			i--;
-			continue;
+			continue ;
 		}
 		if (!is_valid_number(trimmed))
 		{
