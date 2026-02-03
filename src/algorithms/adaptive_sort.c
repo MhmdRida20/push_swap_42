@@ -6,7 +6,7 @@
 /*   By: mrida <mrida@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/28 18:38:28 by aalkhati          #+#    #+#             */
-/*   Updated: 2026/02/03 15:04:19 by mrida            ###   ########.fr       */
+/*   Updated: 2026/02/03 15:08:26 by mrida            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ O(n
 n) time.
 - High disorder: if disorder ≥ 0.5, your chosen method must run in O(n log n)
 time.*/
-static void	compute_disorder(t_stack pa)
+static double	compute_disorder(t_stack pa)
 {
 	int	mistakes;
 	int	total_pair;
@@ -56,7 +56,7 @@ void	adaptive_sort(t_push_swap *ps)
 	int		size;
 	double	disorder;
 
-	disorder = compute_disorder(ps->stack_a);
+	disorder = compute_disorder(*ps->stack_a);
 	ps->disorder = disorder;
 	if (!ps || !ps->stack_a)
 		return ;
