@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: aalkhati <aalkhati@student.42.fr>          +#+  +:+       +#+         #
+#    By: mrida <mrida@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/12/13 00:31:45 by mrida             #+#    #+#              #
-#    Updated: 2026/02/02 22:50:49 by aalkhati         ###   ########.fr        #
+#    Updated: 2026/02/06 13:47:29 by mrida            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,6 +39,7 @@ SRCS		= $(SRC_DIR)/main.c \
 			  $(SRC_DIR)/utils/disorder.c \
 			  $(SRC_DIR)/utils/ft_atoi_safe.c \
 			  $(SRC_DIR)/utils/free_split.c \
+			   $(SRC_DIR)/utils/main_helper_fun.c \
 			  $(SRC_DIR)/algorithms/adaptive_sort.c \
 			  $(SRC_DIR)/algorithms/simple_sort.c \
 			  $(SRC_DIR)/algorithms/medium_sort.c \

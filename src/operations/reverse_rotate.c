@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   reverse_rotate.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aalkhati <aalkhati@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mrida <mrida@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/03 05:34:30 by aalkhati          #+#    #+#             */
-/*   Updated: 2026/01/21 20:12:04 by aalkhati         ###   ########.fr       */
+/*   Updated: 2026/02/06 14:12:08 by mrida            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ void	rra(t_push_swap *ps, int print)
 	reverse_rotate(ps->stack_a);
 	if (print)
 		ft_printf("rra\n");
+	ps->operations++;
 }
 
 void	rrb(t_push_swap *ps, int print)
@@ -42,6 +43,7 @@ void	rrb(t_push_swap *ps, int print)
 	reverse_rotate(ps->stack_b);
 	if (print)
 		ft_printf("rrb\n");
+	ps->operations++;
 }
 
 void	rrr(t_push_swap *ps)

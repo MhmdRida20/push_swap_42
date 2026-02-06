@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack_init.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aalkhati <aalkhati@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mrida <mrida@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/03 05:51:30 by aalkhati          #+#    #+#             */
-/*   Updated: 2026/01/21 20:14:23 by aalkhati         ###   ########.fr       */
+/*   Updated: 2026/02/06 13:29:21 by mrida            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,4 +65,25 @@ void	free_push_swap(t_push_swap *ps)
 	if (ps->stack_b)
 		free_stack(ps->stack_b);
 	free(ps);
+}
+
+t_push_swap	*init_push_swap(void)
+{
+	t_push_swap	*ps;
+
+	ps = (t_push_swap *)malloc(sizeof(t_push_swap));
+	if (!ps)
+		return (NULL);
+	ps->stack_a = init_stack();
+	ps->stack_b = init_stack();
+	if (!ps->stack_a || !ps->stack_b)
+	{
+		free_push_swap(ps);
+		return (NULL);
+	}
+	ps->operations = NULL;
+	ps->op_count = 0;
+	ps->disorder = 0.0;
+	ps->strategy = ADAPTIVE;
+	return (ps);
 }

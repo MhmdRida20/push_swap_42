@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aalkhati <aalkhati@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mrida <mrida@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/21 20:07:34 by aalkhati          #+#    #+#             */
-/*   Updated: 2026/02/02 22:48:44 by aalkhati         ###   ########.fr       */
+/*   Updated: 2026/02/06 15:43:07 by mrida            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ typedef struct s_push_swap
 	t_stack			*stack_b;
 	char			**operations;
 	int				op_count;
+	int				operation [11];
 	double			disorder;
 	t_strategy		strategy;
 }					t_push_swap;
@@ -67,6 +68,7 @@ t_stack				*init_stack(void);
 t_node				*create_node(int value);
 void				free_stack(t_stack *stack);
 void				free_push_swap(t_push_swap *ps);
+t_push_swap			*init_push_swap(void);
 
 /* ========== STACK OPERATIONS ========== */
 void				push_to_stack(t_stack *stack, t_node *node);
@@ -96,6 +98,7 @@ void				simple_sort(t_push_swap *ps);
 void				medium_sort(t_push_swap *ps);
 void				complex_sort(t_push_swap *ps);
 void				adaptive_sort(t_push_swap *ps);
+double				compute_disorder(t_stack *pa);
 
 /* ========== UTILS ========== */
 int					is_sorted(t_stack *stack);
@@ -104,5 +107,9 @@ int					ft_atoi_safe(const char *str, t_push_swap *ps);
 void				assign_indices(t_stack *stack);
 double				calculate_disorder(t_stack *stack);
 void				free_split(char **split);
+int					is_flag(char *arg);
+int					ft_strcmp_simple(const char *s1, const char *s2);
+void				run_sort(t_push_swap *ps);
+void				print_benchmark(t_push_swap *ps, int bench_mode);
 
 #endif

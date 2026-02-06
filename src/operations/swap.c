@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   swap.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aalkhati <aalkhati@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mrida <mrida@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/03 04:29:11 by aalkhati          #+#    #+#             */
-/*   Updated: 2026/01/28 18:44:07 by aalkhati         ###   ########.fr       */
+/*   Updated: 2026/02/06 16:20:41 by mrida            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ void	sa(t_push_swap *ps, int print)
 	swap_top_two(ps->stack_a);
 	if (print)
 		ft_printf("sa\n");
+	ps->operations++;
 }
 
 void	sb(t_push_swap *ps, int print)
@@ -40,6 +41,7 @@ void	sb(t_push_swap *ps, int print)
 	swap_top_two(ps->stack_b);
 	if (print)
 		ft_printf("sb\n");
+	ps->operations++;
 }
 
 void	ss(t_push_swap *ps)

@@ -6,7 +6,7 @@
 /*   By: mrida <mrida@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/28 18:38:28 by aalkhati          #+#    #+#             */
-/*   Updated: 2026/02/03 15:04:19 by mrida            ###   ########.fr       */
+/*   Updated: 2026/02/06 16:21:58 by mrida            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,29 +26,33 @@ O(n
 n) time.
 - High disorder: if disorder ≥ 0.5, your chosen method must run in O(n log n)
 time.*/
-static void	compute_disorder(t_stack pa)
+double	compute_disorder(t_stack *pa)
 {
-	int	mistakes;
-	int	total_pair;
-	int	i;
-	int	j;
+	int		mistakes;
+	int		total_pair;
+	t_node	*node_a;
+	t_node	*node_b;
 
+	if (!pa || pa->size)
+		return (0.0);
 	mistakes = 0;
 	total_pair = 0;
-	i = 0;
-	while (i < (pa.size - 1))
+	node_a = pa->top;
+	while (node_a)
 	{
-		j = i + 1;
-		while (j < (pa.size - 1))
+		node_b = node_a->next;
+		while (node_b)
 		{
 			total_pair++;
-			if (pa[i] > pa[j])
+			if (node_a->value > node_b->value)
 				mistakes++;
-			j++;
-		}			
-		i++;
+			node_b = node_b->next;
+		}
+		node_a = node_a->next;
+		if (total_pair == 0)
+			return (0.0);
 	}
-	return (mistakes / total_pair);
+	return ((double)mistakes / (double)total_pair);
 }
 
 void	adaptive_sort(t_push_swap *ps)
@@ -65,7 +69,6 @@ void	adaptive_sort(t_push_swap *ps)
 		return ;
 	else if (disorder < 0.2)
 	{
-		ft_printf("simple");
 		simple_sort(ps);
 	}
 	else if (disorder >= 0.2 && disorder < 0.5)
