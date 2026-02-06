@@ -6,7 +6,7 @@
 /*   By: mrida <mrida@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/28 18:38:28 by aalkhati          #+#    #+#             */
-/*   Updated: 2026/02/06 16:21:58 by mrida            ###   ########.fr       */
+/*   Updated: 2026/02/03 15:08:26 by mrida            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void	adaptive_sort(t_push_swap *ps)
 	int		size;
 	double	disorder;
 
-	disorder = compute_disorder(ps->stack_a);
+	disorder = compute_disorder(*ps->stack_a);
 	ps->disorder = disorder;
 	if (!ps || !ps->stack_a)
 		return ;
