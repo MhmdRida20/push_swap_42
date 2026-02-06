@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rotate.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aalkhati <aalkhati@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mrida <mrida@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/03 05:13:33 by mrida             #+#    #+#             */
-/*   Updated: 2026/01/28 18:53:05 by aalkhati         ###   ########.fr       */
+/*   Updated: 2026/02/06 14:11:00 by mrida            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ void	ra(t_push_swap *ps, int print)
 	rotate(ps->stack_a);
 	if (print)
 		ft_printf("ra\n");
+	ps->operations++;
 }
 
 void	rb(t_push_swap *ps, int print)
@@ -44,6 +45,7 @@ void	rb(t_push_swap *ps, int print)
 	rotate(ps->stack_b);
 	if (print)
 		ft_printf("rb\n");
+	ps->operations++;
 }
 
 void	rr(t_push_swap *ps)
